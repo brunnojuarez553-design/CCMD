@@ -153,6 +153,36 @@ h1,h2,h3{font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:-
 .btn-blue:hover{transform:translateY(-2px);box-shadow:0 14px 42px -6px var(--blue-glow);}
 .btn-outline{border:1px solid var(--line);color:var(--text);background:var(--surface);backdrop-filter:blur(6px);}
 .btn-outline:hover{border-color:var(--blue);transform:translateY(-2px);}
+
+/* CTA final: botones "vivos" que invitan a tocar (pulso + brillo recorriendo) */
+.cta-final-btns .btn{position:relative;overflow:hidden;}
+.cta-final-btns .btn-blue{animation:ctaPulseBlue 2.6s ease-in-out infinite;}
+.cta-final-btns .btn-outline{animation:ctaPulseOutline 2.6s ease-in-out infinite;animation-delay:.35s;}
+.cta-final-btns .btn::after{
+  content:'';position:absolute;inset:0;border-radius:inherit;
+  background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.4) 48%,transparent 66%);
+  background-size:220% 100%;background-position:140% 0;
+  pointer-events:none;mix-blend-mode:overlay;
+  animation:ctaSheen 3.2s ease-in-out infinite;
+}
+.cta-final-btns .btn-outline::after{background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.22) 48%,transparent 66%);}
+.cta-final-btns .btn:hover{animation-play-state:paused;transform:translateY(-3px) scale(1.03);}
+.cta-final-btns .btn-blue:hover{box-shadow:0 18px 48px -8px var(--blue-glow);}
+@keyframes ctaPulseBlue{
+  0%,100%{box-shadow:0 8px 30px -6px var(--blue-glow);}
+  50%{box-shadow:0 8px 40px 2px var(--blue-glow);}
+}
+@keyframes ctaPulseOutline{
+  0%,100%{border-color:var(--line);}
+  50%{border-color:var(--blue);}
+}
+@keyframes ctaSheen{
+  0%{background-position:140% 0;}
+  55%,100%{background-position:-40% 0;}
+}
+@media (prefers-reduced-motion:reduce){
+  .cta-final-btns .btn-blue,.cta-final-btns .btn-outline,.cta-final-btns .btn::after{animation:none;}
+}
 .btn-sm{padding:12px 22px;font-size:13px;}
 .btn-block{width:100%;}
 .icon{width:22px;height:22px;display:block;flex-shrink:0;}
@@ -722,6 +752,12 @@ h1,h2,h3{font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:-
 .pillar-card h4{font-size:14.5px;font-weight:600;font-family:'Inter',sans-serif;margin-bottom:6px;}
 .pillar-card p{font-size:12.5px;color:var(--text-dim);line-height:1.55;}
 .nosotros-more{margin-top:28px;}
+@media (max-width:768px){
+  .nosotros-more .btn{
+    white-space:normal;width:100%;max-width:100%;box-sizing:border-box;
+    text-align:center;line-height:1.35;padding:16px 24px;
+  }
+}
 .btn-cta-glow{
   position:relative;overflow:hidden;isolation:isolate;
   border-color:var(--blue-deep);
@@ -1053,9 +1089,14 @@ body.wg-lock{overflow:hidden;}
 .diag-result-bot::after{bottom:-1px;right:-1px;border-bottom:1.5px solid var(--blue-deep);border-right:1.5px solid var(--blue-deep);}
 
 /* ============ PROCESO / PROTOCOLO ============ */
-.process-track{display:flex;flex-direction:column;position:relative;}
-.process-step{display:flex;gap:20px;padding:24px 0;border-top:1px solid var(--line-soft);position:relative;}
-.process-step:first-child{border-top:1px solid var(--line);}
+.process-track{display:flex;flex-direction:column;gap:14px;position:relative;}
+.process-step{
+  display:flex;gap:20px;padding:22px 24px;position:relative;
+  border-radius:var(--radius-md);
+  background:linear-gradient(165deg,rgba(10,11,14,.68),rgba(8,9,12,.56));
+  border:1px solid rgba(255,255,255,.075);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+}
 .process-num{
   font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--blue-light);
   flex-shrink:0;width:34px;padding-top:3px;letter-spacing:.02em;
@@ -1075,8 +1116,7 @@ body.wg-lock{overflow:hidden;}
     content:'';position:absolute;left:15px;top:10px;bottom:10px;width:1px;
     background:linear-gradient(180deg,transparent,var(--blue-deep) 8%,var(--blue-deep) 92%,transparent);
   }
-  .process-step{border-top:none;padding:26px 0;}
-  .process-step:first-child{border-top:none;}
+  .process-step{padding:26px 28px;}
   .process-num{
     position:absolute;left:-52px;top:26px;width:32px;height:32px;border-radius:50%;
     display:flex;align-items:center;justify-content:center;padding-top:0;
@@ -1089,7 +1129,23 @@ body.wg-lock{overflow:hidden;}
 .price-tab{border:1px solid var(--line);border-radius:100px;padding:11px 22px;font-size:13px;color:var(--text-dim);transition:.3s;}
 .price-tab.active{border-color:var(--blue);color:var(--text);background:rgba(34,195,232,.08);}
 .price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
-.price-card{border:1px solid var(--line);border-radius:var(--radius-md);padding:28px 24px;background:var(--surface);display:flex;flex-direction:column;}
+.price-card{
+  position:relative;isolation:isolate;overflow:hidden;
+  border:1px solid var(--line);border-radius:var(--radius-md);padding:28px 24px;background:var(--surface);display:flex;flex-direction:column;
+}
+.price-card.price-card--photo{border-color:rgba(255,255,255,.1);}
+.price-card.price-card--photo::before{
+  content:'';position:absolute;inset:0;z-index:-2;
+  background-image:var(--photo-bg);background-size:cover;background-position:center;
+  filter:saturate(.9) contrast(1.05) brightness(.5);
+  transform:scale(1.03);
+  transition:transform .6s var(--ease);
+}
+.price-card.price-card--photo::after{
+  content:'';position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg, rgba(6,7,10,.28) 0%, rgba(6,7,10,.7) 55%, rgba(6,7,10,.92) 100%);
+}
+.price-card.price-card--photo:hover::before{transform:scale(1.08);}
 .price-card .exp-num{margin-bottom:14px;}
 .price-card h4{font-size:16.5px;margin-bottom:10px;}
 .price-card .price-val{font-family:'Space Grotesk',sans-serif;font-size:28px;color:var(--blue-light);margin-bottom:6px;}
@@ -1893,7 +1949,7 @@ footer{border-top:1px solid var(--line-soft);padding:70px 0 32px;background:var(
 <section class="section section-bg-photo" id="proceso" style="--photo-bg:url('https://res.cloudinary.com/dgp7uhps3/image/upload/v1784328283/IMG_8928_fbqvrr.jpg');">
   <div class="container" style="max-width:900px;">
     <div class="section-head reveal">
-      <p class="eyebrow" data-i18n="proceso.eyebrow">EL PROTOCOLO SF PRECISION</p>
+      <p class="eyebrow" data-i18n="proceso.eyebrow">NUESTRO PROTOCOLO</p>
       <h2 class="h2" data-i18n="proceso.h2">Un protocolo, no una línea de producción.</h2>
       <p class="lead" data-i18n="proceso.lead">Desde el diagnóstico hasta la entrega, cada vehículo pasa por el mismo proceso — documentado, medible, sin pasos de más.</p>
     </div>
@@ -2016,12 +2072,12 @@ footer{border-top:1px solid var(--line-soft);padding:70px 0 32px;background:var(
 </section>
 
 <!-- CTA FINAL -->
-<section class="section">
+<section class="section section-bg-photo" style="--photo-bg:url('https://res.cloudinary.com/dgp7uhps3/image/upload/v1784328274/IMG_8914_o3xxgj.jpg');">
   <div class="container">
     <div class="glass reveal" style="text-align:center;border-radius:var(--radius-lg);padding:90px 40px;">
       <h2 class="h2" data-i18n="ctafinal.h2">Tu vehículo merece una limpieza real</h2>
       <p class="lead" style="margin:18px auto 36px;" data-i18n="ctafinal.lead">Agendá tu servicio hoy y dejá que nosotros vayamos hasta ti.</p>
-      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <div class="cta-final-btns" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
         <a href="#diagnostico" class="btn btn-blue" data-i18n="nav.cta">Solicitar Diagnóstico</a>
         <a href="#" id="ctaFinalWaBtn" class="btn btn-outline" target="_blank" rel="noopener" data-i18n="ctafinal.wa">Agendar turno por WhatsApp</a>
       </div>
@@ -2260,7 +2316,7 @@ const EN = {
 "diag.systag":"Clean Clean Vision System™ — Condition Report","diag.done":"Analysis complete",
 "diag.score.label":"OVERALL VEHICLE CONDITION","diag.score.sub":"Analyzing...","diag.recommended":"RECOMMENDED",
 "diag.bookthis":"Book this service","diag.seeall":"See all services",
-"proceso.eyebrow":"THE SF PRECISION PROTOCOL","proceso.h2":"A protocol, not a production line.",
+"proceso.eyebrow":"OUR PROTOCOL","proceso.h2":"A protocol, not a production line.",
 "proceso.lead":"From diagnosis to delivery, every vehicle goes through the same process — documented, measurable, with no extra steps.",
 "proceso.1.h":"Initial diagnosis","proceso.1.p":"We assess the real condition of the paint, current protection level and the vehicle's specific conditions. Before touching anything, we already know exactly what it needs.","proceso.1.tag":"No assumptions",
 "proceso.2.h":"Intake and documentation","proceso.2.p":"We document the vehicle's incoming condition with photos and a point-by-point checklist. It's the reference we use to measure the final result.","proceso.2.tag":"Traceability",
@@ -2684,12 +2740,12 @@ renderNeeds();
 
 /* ================= SERVICES & PRICING ================= */
 const priceServices = [
-  {es:['Interior & Exterior Detailing','Lavado a mano, aspirado profundo, shampoo de tapicería y vidrios sin residuos.'], en:['Interior & Exterior Detailing','Hand wash, deep vacuuming, upholstery shampoo and residue-free glass.']},
-  {es:['Corrección de Pintura','Removemos swirls y marcas superficiales para recuperar el brillo original.'], en:['Paint Correction','We remove swirls and surface marks to restore the original shine.']},
-  {es:['Ceramic Coating','Recubrimiento cerámico que protege contra UV, agua y suciedad por más tiempo.'], en:['Ceramic Coating','A ceramic coating that protects against UV, water and dirt for longer.']},
-  {es:['Eliminación de Olores','Tratamiento que elimina el olor desde la fuente, no lo cubre.'], en:['Odor Removal','A treatment that eliminates odor at the source, not just masks it.']},
-  {es:['Restauración de Faros','Óptica opacada por UV recuperada a claridad de fábrica.'], en:['Headlight Restoration','UV-clouded lenses restored to factory clarity.']},
-  {es:['Mantenimiento a Mano','Lavados recurrentes para conservar tu vehículo entre servicios completos.'], en:['Hand Maintenance','Recurring washes to keep your vehicle looking great between full services.']},
+  {img:'https://res.cloudinary.com/dgp7uhps3/image/upload/v1783036384/7abd10_6995ea22b4784c5c876b7e5438194457_mv2_qehp2y.avif', es:['Interior & Exterior Detailing','Lavado a mano, aspirado profundo, shampoo de tapicería y vidrios sin residuos.'], en:['Interior & Exterior Detailing','Hand wash, deep vacuuming, upholstery shampoo and residue-free glass.']},
+  {img:'https://res.cloudinary.com/dgp7uhps3/image/upload/v1783036384/8680ee_85767fd6e0584d1785a3d7203357d01a_mv2_yfmkxy.avif', es:['Corrección de Pintura','Removemos swirls y marcas superficiales para recuperar el brillo original.'], en:['Paint Correction','We remove swirls and surface marks to restore the original shine.']},
+  {img:'https://res.cloudinary.com/dgp7uhps3/image/upload/v1783036384/7abd10_15137d8156fb428588b15bed7f2880a0_mv2_tzmhj8.avif', es:['Ceramic Coating','Recubrimiento cerámico que protege contra UV, agua y suciedad por más tiempo.'], en:['Ceramic Coating','A ceramic coating that protects against UV, water and dirt for longer.']},
+  {img:'https://res.cloudinary.com/dgp7uhps3/image/upload/v1783036384/7abd10_903a7ebb72be46908026543f3a4a2a2d_mv2_t2t1yy.avif', es:['Eliminación de Olores','Tratamiento que elimina el olor desde la fuente, no lo cubre.'], en:['Odor Removal','A treatment that eliminates odor at the source, not just masks it.']},
+  {img:'https://res.cloudinary.com/dgp7uhps3/image/upload/v1783036384/8680ee_e0ec444d00c64787bd24b2c79561650f_mv2_ifwggj.avif', es:['Restauración de Faros','Óptica opacada por UV recuperada a claridad de fábrica.'], en:['Headlight Restoration','UV-clouded lenses restored to factory clarity.']},
+  {img:'https://res.cloudinary.com/dgp7uhps3/image/upload/v1783036384/7abd10_f6e76e27b8af4aecb0fe8d77fb9ab706_mv2_degcvk.avif', es:['Mantenimiento a Mano','Lavados recurrentes para conservar tu vehículo entre servicios completos.'], en:['Hand Maintenance','Recurring washes to keep your vehicle looking great between full services.']},
 ];
 const priceGrid = document.getElementById('priceGrid');
 function renderPrice(){
@@ -2699,7 +2755,8 @@ function renderPrice(){
   priceServices.forEach((svc,i)=>{
     const [name, note] = svc[currentLang];
     const card = document.createElement('div');
-    card.className = 'price-card';
+    card.className = 'price-card price-card--photo';
+    card.style.setProperty('--photo-bg', `url('${svc.img}')`);
     const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waText('price', name))}`;
     card.innerHTML = `<span class="exp-num">SERV. 0${i+1}</span><h4>${name}</h4><p class="price-val" style="font-size:0.5em;">${quoteLabel}</p><p class="price-from">${fromLabel}</p><p>${note}</p><a class="price-wa-btn" href="${waHref}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.07L2 22l5.06-1.33A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18a7.95 7.95 0 01-4.06-1.11l-.29-.17-3 .79.8-2.93-.19-.3A7.96 7.96 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8zm4.29-5.71c-.23-.12-1.37-.68-1.58-.76-.21-.08-.37-.12-.52.12-.15.23-.6.76-.74.92-.14.15-.27.17-.5.06-.23-.12-.98-.36-1.87-1.15-.69-.62-1.16-1.38-1.29-1.61-.14-.23-.01-.36.1-.47.11-.11.23-.27.35-.41.11-.14.15-.23.23-.39.08-.15.04-.29-.02-.41-.06-.12-.52-1.25-.71-1.71-.19-.45-.38-.39-.52-.4h-.44c-.15 0-.4.06-.61.29-.21.23-.8.78-.8 1.9 0 1.12.82 2.2.93 2.35.12.15 1.61 2.46 3.9 3.45.55.24.97.38 1.31.48.55.17 1.05.15 1.44.09.44-.07 1.37-.56 1.56-1.1.19-.54.19-1 .13-1.1-.06-.1-.21-.15-.44-.27z"/></svg>WhatsApp</a>`;
     priceGrid.appendChild(card);
