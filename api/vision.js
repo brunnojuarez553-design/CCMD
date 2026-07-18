@@ -1,7 +1,12 @@
 // /api/vision.js
 // Función serverless de Vercel para el diagnóstico visual del vehículo.
 // Recibe una imagen en base64 desde el navegador y la reenvía a un modelo de visión
-// de Groq usando la API key guardada en la variable de entorno GROQ_API_KEY.
+// de Groq usando la API key guardada en la variable de entorno GROQ_API_KEY_VISION
+// (independiente de la key general GROQ_API_KEY que usan otros features del sitio,
+// como el chat de asesoría).
+//
+// NOTA (17/07/2026): meta-llama/llama-4-scout-17b-16e-instruct fue dado de baja por Groq.
+// Se migró a qwen/qwen3.6-27b, el modelo con soporte de visión vigente en su lugar.
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {
@@ -9,9 +14,9 @@ module.exports = async (req, res) => {
     return;
   }
 
-  const apiKey = process.env.GROQ_API_KEY;
+  const apiKey = process.env.GROQ_API_KEY_VISION;
   if (!apiKey) {
-    res.status(500).json({ error: 'GROQ_API_KEY no está configurada en el servidor.' });
+    res.status(500).json({ error: 'GROQ_API_KEY_VISION no está configurada en el servidor.' });
     return;
   }
 
@@ -31,7 +36,7 @@ module.exports = async (req, res) => {
         Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: 'meta-llama/llama-4-scout-17b-16e-instruct',
+        model: 'qwen/qwen3.6-27b',
         messages: [
           {
             role: 'user',
