@@ -598,6 +598,8 @@ h1,h2,h3{font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:-
 }
 .exp-tags{display:flex;gap:10px;flex-wrap:wrap;}
 .exp-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--text-dim);border:1px solid var(--line);padding:7px 14px;border-radius:100px;background:rgba(6,7,10,.35);}
+.exp-wa-btn{margin-top:22px;}
+.exp-wa-btn svg{width:16px;height:16px;flex-shrink:0;}
 .exp-visual{border-radius:var(--radius-lg);padding:36px;min-height:320px;}
 
 /* Experience 01 — maintenance checklist */
@@ -646,6 +648,16 @@ h1,h2,h3{font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:-
 .extra-card .extra-icon{width:38px;height:38px;border-radius:50%;border:1px solid var(--blue-deep);display:flex;align-items:center;justify-content:center;color:var(--blue-light);margin-bottom:18px;}
 .extra-card h4{font-size:15.5px;font-weight:600;font-family:'Inter',sans-serif;margin-bottom:8px;}
 .extra-card p{font-size:13px;color:var(--text-dim);}
+.extra-card{display:flex;flex-direction:column;}
+.extra-card .price-wa-btn{
+  margin-top:16px;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:10px 16px;border-radius:var(--radius-sm,8px);border:1px solid var(--blue-deep);
+  color:var(--blue-light);font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.04em;
+  text-transform:uppercase;transition:background .3s,color .3s,border-color .3s;text-decoration:none;
+  margin-top:auto;align-self:flex-start;
+}
+.extra-card .price-wa-btn svg{width:15px;height:15px;flex-shrink:0;}
+.extra-card .price-wa-btn:hover{background:var(--blue);color:#04141a;border-color:var(--blue);}
 
 /* ============ NEED SELECTOR (interactive) ============ */
 .need-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:36px;}
@@ -1590,7 +1602,6 @@ footer{border-top:1px solid var(--line-soft);padding:70px 0 32px;background:var(
       <span class="hero-rating-stars">★★★★★</span>
       <span class="hero-rating-text"><b>5.0</b> <span data-i18n="hero.rating.text">· 26 reseñas en Google</span></span>
     </a>
-    <p class="eyebrow" data-i18n="hero.eyebrow">CLEAN CLEAN MOBILE DETAIL · HOUSTON, TX · VAMOS HASTA USTED</p>
     <h1 class="hero-title"><span class="htw htw-1">CLEAN</span> <span class="htw htw-2">CLEAN</span><br class="title-br"><span class="htw htw-3 accent">MOBILE DETAIL.</span></h1>
     <p class="hero-sub hero-sub-mobile" data-i18n="hero.sub.mobile">Detallado móvil interior y exterior, corrección de pintura y recubrimiento cerámico. Vamos hasta ti.</p>
     <p class="hero-sub hero-sub-full" data-i18n="hero.sub.full">Detallado automotriz móvil en Houston, TX y áreas cercanas. Limpieza interior y exterior, corrección de pintura, recubrimiento cerámico, eliminación de olores y restauración de faros — con el mismo cuidado que le darías a tu propio auto, directo en tu casa u oficina.</p>
@@ -1704,6 +1715,7 @@ footer{border-top:1px solid var(--line-soft);padding:70px 0 32px;background:var(
         <h3 data-i18n="exp1.h3">Interior & Exterior Detailing</h3>
         <p class="exp-text" data-i18n="exp1.text">La base de todo servicio: limpieza profunda de interior y exterior, dejando tu vehículo como recién salido del lote. Aspirado completo, shampoo de tapicería, y exterior libre de contaminantes.</p>
         <div class="exp-tags"><span class="exp-tag" data-i18n="exp1.tag1">LAVADO DETALLADO</span><span class="exp-tag" data-i18n="exp1.tag2">INTERIOR</span><span class="exp-tag" data-i18n="exp1.tag3">EXTERIOR</span></div>
+        <a href="#" id="exp1WaBtn" class="btn btn-blue btn-sm exp-wa-btn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.07L2 22l5.06-1.33A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18a7.95 7.95 0 01-4.06-1.11l-.29-.17-3 .79.8-2.93-.19-.3A7.96 7.96 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8zm4.29-5.71c-.23-.12-1.37-.68-1.58-.76-.21-.08-.37-.12-.52.12-.15.23-.6.76-.74.92-.14.15-.27.17-.5.06-.23-.12-.98-.36-1.87-1.15-.69-.62-1.16-1.38-1.29-1.61-.14-.23-.01-.36.1-.47.11-.11.23-.27.35-.41.11-.14.15-.23.23-.39.08-.15.04-.29-.02-.41-.06-.12-.52-1.25-.71-1.71-.19-.45-.38-.39-.52-.4h-.44c-.15 0-.4.06-.61.29-.21.23-.8.78-.8 1.9 0 1.12.82 2.2.93 2.35.12.15 1.61 2.46 3.9 3.45.55.24.97.38 1.31.48.55.17 1.05.15 1.44.09.44-.07 1.37-.56 1.56-1.1.19-.54.19-1 .13-1.1-.06-.1-.21-.15-.44-.27z"/></svg><span data-i18n="exp1.wa">Consultar por WhatsApp</span></a>
       </div>
       <div class="exp-visual glass">
         <div class="maint-grid">
@@ -1724,6 +1736,7 @@ footer{border-top:1px solid var(--line-soft);padding:70px 0 32px;background:var(
         <h3 data-i18n="exp2.h3">Corrección de pintura</h3>
         <p class="exp-text" data-i18n="exp2.text">Removemos swirls, marcas de lavadero y defectos superficiales que opacan tu pintura. El nivel de pulido — ligero, medio o completo — depende del estado real de tu vehículo.</p>
         <div class="exp-tags"><span class="exp-tag" data-i18n="exp2.tag1">PULIDO LIGERO</span><span class="exp-tag" data-i18n="exp2.tag2">PULIDO MEDIO</span><span class="exp-tag" data-i18n="exp2.tag3">PULIDO COMPLETO</span></div>
+        <a href="#" id="exp2WaBtn" class="btn btn-blue btn-sm exp-wa-btn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.07L2 22l5.06-1.33A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18a7.95 7.95 0 01-4.06-1.11l-.29-.17-3 .79.8-2.93-.19-.3A7.96 7.96 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8zm4.29-5.71c-.23-.12-1.37-.68-1.58-.76-.21-.08-.37-.12-.52.12-.15.23-.6.76-.74.92-.14.15-.27.17-.5.06-.23-.12-.98-.36-1.87-1.15-.69-.62-1.16-1.38-1.29-1.61-.14-.23-.01-.36.1-.47.11-.11.23-.27.35-.41.11-.14.15-.23.23-.39.08-.15.04-.29-.02-.41-.06-.12-.52-1.25-.71-1.71-.19-.45-.38-.39-.52-.4h-.44c-.15 0-.4.06-.61.29-.21.23-.8.78-.8 1.9 0 1.12.82 2.2.93 2.35.12.15 1.61 2.46 3.9 3.45.55.24.97.38 1.31.48.55.17 1.05.15 1.44.09.44-.07 1.37-.56 1.56-1.1.19-.54.19-1 .13-1.1-.06-.1-.21-.15-.44-.27z"/></svg><span data-i18n="exp2.wa">Consultar por WhatsApp</span></a>
       </div>
       <div class="exp-visual glass">
         <div class="corr-tabs" id="corrTabs"></div>
@@ -1740,6 +1753,7 @@ footer{border-top:1px solid var(--line-soft);padding:70px 0 32px;background:var(
         <h3>Ceramic Coating</h3>
         <p class="exp-text" data-i18n="exp3.text">Un recubrimiento cerámico que cambia cómo tu pintura responde al sol, al agua y al tiempo — con descontaminación y pulido incluidos antes de la aplicación.</p>
         <div class="exp-tags"><span class="exp-tag">CERAMIC COATING</span><span class="exp-tag" data-i18n="exp3.tag2">PROTECCIÓN DURADERA</span></div>
+        <a href="#" id="exp3WaBtn" class="btn btn-blue btn-sm exp-wa-btn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.07L2 22l5.06-1.33A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18a7.95 7.95 0 01-4.06-1.11l-.29-.17-3 .79.8-2.93-.19-.3A7.96 7.96 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8zm4.29-5.71c-.23-.12-1.37-.68-1.58-.76-.21-.08-.37-.12-.52.12-.15.23-.6.76-.74.92-.14.15-.27.17-.5.06-.23-.12-.98-.36-1.87-1.15-.69-.62-1.16-1.38-1.29-1.61-.14-.23-.01-.36.1-.47.11-.11.23-.27.35-.41.11-.14.15-.23.23-.39.08-.15.04-.29-.02-.41-.06-.12-.52-1.25-.71-1.71-.19-.45-.38-.39-.52-.4h-.44c-.15 0-.4.06-.61.29-.21.23-.8.78-.8 1.9 0 1.12.82 2.2.93 2.35.12.15 1.61 2.46 3.9 3.45.55.24.97.38 1.31.48.55.17 1.05.15 1.44.09.44-.07 1.37-.56 1.56-1.1.19-.54.19-1 .13-1.1-.06-.1-.21-.15-.44-.27z"/></svg><span data-i18n="exp3.wa">Consultar por WhatsApp</span></a>
       </div>
       <div class="exp-visual glass">
         <div class="benefit-grid">
@@ -1761,6 +1775,7 @@ footer{border-top:1px solid var(--line-soft);padding:70px 0 32px;background:var(
         <h3 data-i18n="exp4.h3">Mantenimiento a mano</h3>
         <p class="exp-text" data-i18n="exp4.text">Para vehículos que ya están protegidos y solo necesitan conservación regular. Lavados de mantenimiento programados que mantienen tu vehículo impecable entre servicios completos.</p>
         <div class="exp-tags"><span class="exp-tag" data-i18n="exp4.tag1">LAVADO A MANO</span><span class="exp-tag" data-i18n="exp4.tag2">PLAN RECURRENTE</span></div>
+        <a href="#" id="exp4WaBtn" class="btn btn-blue btn-sm exp-wa-btn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.07L2 22l5.06-1.33A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18a7.95 7.95 0 01-4.06-1.11l-.29-.17-3 .79.8-2.93-.19-.3A7.96 7.96 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8zm4.29-5.71c-.23-.12-1.37-.68-1.58-.76-.21-.08-.37-.12-.52.12-.15.23-.6.76-.74.92-.14.15-.27.17-.5.06-.23-.12-.98-.36-1.87-1.15-.69-.62-1.16-1.38-1.29-1.61-.14-.23-.01-.36.1-.47.11-.11.23-.27.35-.41.11-.14.15-.23.23-.39.08-.15.04-.29-.02-.41-.06-.12-.52-1.25-.71-1.71-.19-.45-.38-.39-.52-.4h-.44c-.15 0-.4.06-.61.29-.21.23-.8.78-.8 1.9 0 1.12.82 2.2.93 2.35.12.15 1.61 2.46 3.9 3.45.55.24.97.38 1.31.48.55.17 1.05.15 1.44.09.44-.07 1.37-.56 1.56-1.1.19-.54.19-1 .13-1.1-.06-.1-.21-.15-.44-.27z"/></svg><span data-i18n="exp4.wa">Consultar por WhatsApp</span></a>
       </div>
       <div class="exp-visual glass">
         <div class="maint-grid">
@@ -2282,12 +2297,15 @@ const EN = {
 "exp1.tag1":"DETAILED WASH","exp1.tag2":"INTERIOR","exp1.tag3":"EXTERIOR",
 "exp1.list1":"Hand exterior wash","exp1.list2":"Deep vacuum and detailed interior","exp1.list3":"Upholstery shampoo",
 "exp1.list4":"Streak- and residue-free glass","exp1.list5":"Finished wheels and tires","exp1.list6":"Odor removal",
+"exp1.wa":"Ask on WhatsApp",
 "exp2.num":"SERVICE 02 / PAINT CORRECTION","exp2.h3":"Paint Correction",
 "exp2.text":"We remove swirls, wash marks and surface defects that dull your paint. The polishing level — light, medium or full — depends on your vehicle's actual condition.",
 "exp2.tag1":"LIGHT POLISH","exp2.tag2":"MEDIUM POLISH","exp2.tag3":"FULL POLISH",
+"exp2.wa":"Ask on WhatsApp",
 "exp3.num":"SERVICE 03 / CERAMIC COATING",
 "exp3.text":"A ceramic coating that changes how your paint responds to the sun, water and time — with decontamination and polishing included before application.",
 "exp3.tag2":"LASTING PROTECTION",
+"exp3.wa":"Ask on WhatsApp",
 "exp3.b1.h":"UV Protection","exp3.b1.p":"Paint stops oxidizing and losing color under the Houston sun.",
 "exp3.b2.h":"Water Repellency","exp3.b2.p":"Water and dirt slide off before they can settle on the surface.",
 "exp3.b3.h":"Greater Depth","exp3.b3.p":"The color gains a shine and optical depth you'll notice right away.",
@@ -2296,6 +2314,7 @@ const EN = {
 "exp4.num":"SERVICE 04 / MAINTENANCE","exp4.h3":"Hand Maintenance",
 "exp4.text":"For vehicles that are already protected and just need regular upkeep. Scheduled maintenance washes that keep your vehicle spotless between full services.",
 "exp4.tag1":"HAND WASH","exp4.tag2":"RECURRING PLAN",
+"exp4.wa":"Ask on WhatsApp",
 "exp4.list1":"Hand exterior wash, no abrasive contact","exp4.list2":"Quick interior vacuum","exp4.list3":"Refresh of existing ceramic protection",
 "exp4.list4":"Finished glass and wheels","exp4.list5":"Weekly, biweekly or monthly plans",
 "extra.eyebrow":"ADDITIONAL SERVICES","extra.h2":"The detail that separates good from flawless",
@@ -2631,7 +2650,9 @@ function renderExtra(){
     const card = document.createElement('div');
     card.className = 'extra-card reveal';
     card.style.transitionDelay = (i*0.05)+'s';
-    card.innerHTML = `<div class="extra-icon">${icon(s.icon)}</div><h4>${s.title[currentLang]}</h4><p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--blue-light);margin:6px 0 10px;">${s.price[currentLang]}</p><p>${s.text[currentLang]}</p>`;
+    const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waText('price', s.title[currentLang]))}`;
+    const waLabel = currentLang === 'en' ? 'WhatsApp' : 'WhatsApp';
+    card.innerHTML = `<div class="extra-icon">${icon(s.icon)}</div><h4>${s.title[currentLang]}</h4><p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--blue-light);margin:6px 0 10px;">${s.price[currentLang]}</p><p>${s.text[currentLang]}</p><a class="price-wa-btn" href="${waHref}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.07L2 22l5.06-1.33A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18a7.95 7.95 0 01-4.06-1.11l-.29-.17-3 .79.8-2.93-.19-.3A7.96 7.96 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8zm4.29-5.71c-.23-.12-1.37-.68-1.58-.76-.21-.08-.37-.12-.52.12-.15.23-.6.76-.74.92-.14.15-.27.17-.5.06-.23-.12-.98-.36-1.87-1.15-.69-.62-1.16-1.38-1.29-1.61-.14-.23-.01-.36.1-.47.11-.11.23-.27.35-.41.11-.14.15-.23.23-.39.08-.15.04-.29-.02-.41-.06-.12-.52-1.25-.71-1.71-.19-.45-.38-.39-.52-.4h-.44c-.15 0-.4.06-.61.29-.21.23-.8.78-.8 1.9 0 1.12.82 2.2.93 2.35.12.15 1.61 2.46 3.9 3.45.55.24.97.38 1.31.48.55.17 1.05.15 1.44.09.44-.07 1.37-.56 1.56-1.1.19-.54.19-1 .13-1.1-.06-.1-.21-.15-.44-.27z"/></svg>${waLabel}</a>`;
     extraGrid.appendChild(card);
     requestAnimationFrame(()=>{ card.style.opacity = 1; card.style.transform = 'none'; });
   });
@@ -2841,6 +2862,16 @@ function refreshWaLinks(){
   const homeBtn = document.getElementById('homeServiceWaBtn'); if(homeBtn) homeBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waText('home'))}`;
   if(studioWaBtn) studioWaBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waText('studio'))}`;
   const extraBtn = document.getElementById('extraWaBtn'); if(extraBtn) extraBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waText('extra'))}`;
+  const expServiceNames = {
+    exp1WaBtn: { es:'Interior & Exterior Detailing', en:'Interior & Exterior Detailing' },
+    exp2WaBtn: { es:'Corrección de pintura', en:'Paint Correction' },
+    exp3WaBtn: { es:'Ceramic Coating', en:'Ceramic Coating' },
+    exp4WaBtn: { es:'Mantenimiento a mano', en:'Hand Maintenance' }
+  };
+  Object.keys(expServiceNames).forEach(id=>{
+    const btn = document.getElementById(id);
+    if(btn) btn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waText('price', expServiceNames[id][currentLang]))}`;
+  });
 }
 refreshWaLinks();
 
