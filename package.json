@@ -1,0 +1,9 @@
+{
+  "name": "clean-clean-mobile-detail",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sitio web de Clean Clean Mobile Detail, con asesor por chat y diagnóstico visual impulsados por Groq.",
+  "engines": {
+    "node": ">=18"
+  }
+}
