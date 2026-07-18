@@ -47,7 +47,9 @@ module.exports = async (req, res) => {
           },
         ],
         temperature: 0.4,
-        max_completion_tokens: 1024,
+        max_completion_tokens: 2048,
+        reasoning_effort: 'none',
+        reasoning_format: 'hidden',
       }),
     });
 
@@ -60,7 +62,16 @@ module.exports = async (req, res) => {
       return;
     }
 
-    const content = (data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) || '';
+    let content = (data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) || '';
+    // Resguardo: el modelo puede devolver un bloque de razonamiento (<think>...</think>)
+    // antes del JSON, y a veces ese bloque queda sin cerrar si se corta por el límite
+    // de tokens. En vez de intentar removerlo con una regex frágil, extraemos
+    // directamente el objeto JSON buscando el primer '{' y el último '}' de la respuesta.
+    const firstBrace = content.indexOf('{');
+    const lastBrace = content.lastIndexOf('}');
+    if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
+      content = content.slice(firstBrace, lastBrace + 1);
+    }
     res.status(200).json({ content });
   } catch (err) {
     res.status(500).json({ error: err.message || 'Error interno del servidor.' });
