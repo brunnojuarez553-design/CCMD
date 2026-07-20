@@ -2737,6 +2737,7 @@ function renderQuickServices(){
   const quoteLabel = currentLang === 'en' ? 'QUOTE' : 'COTIZACIÓN';
   const vehicleLabel = currentLang === 'en' ? 'Select your vehicle' : 'Elegí tu vehículo';
   const extrasLabel = currentLang === 'en' ? 'Add extras' : 'Sumar extras';
+  const bookLabel = currentLang === 'en' ? 'Book Appointment' : 'Agendar turno';
   quickServices.forEach((svc,i)=>{
     const [name, note] = svc[currentLang];
     const card = document.createElement('div');
@@ -2756,7 +2757,7 @@ function renderQuickServices(){
         <button type="button" class="quick-extras-toggle">+ ${extrasLabel}<span class="quick-extras-count"></span></button>
         <div class="quick-extras-list" hidden>${extrasChips}</div>
       </div>
-      <a class="price-wa-btn" href="#" target="_blank" rel="noopener">${waSvg}WhatsApp</a>`;
+      <a class="price-wa-btn" href="#" target="_blank" rel="noopener">${waSvg}${bookLabel}</a>`;
     quickServicesGrid.appendChild(card);
 
     const toggleBtn = card.querySelector('.quick-extras-toggle');
