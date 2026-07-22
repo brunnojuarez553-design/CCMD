@@ -108,7 +108,6 @@ h1,h2,h3{font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:-
 
 #asesor-rapido{position:relative;isolation:isolate;overflow:hidden;}
 
-#diagnostico{position:relative;isolation:isolate;overflow:hidden;}
 
 #antes-despues{position:relative;isolation:isolate;overflow:hidden;background:var(--bg);}
 #antes-despues::before{
@@ -1021,85 +1020,6 @@ body.wg-lock{overflow:hidden;}
   background:linear-gradient(180deg, rgba(8,9,13,.5) 0%, rgba(8,9,13,.7) 30%, rgba(8,9,13,.88) 100%);
 }
 
-/* ============ AI DIAGNÓSTICO ============ */
-.diag-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
-.diag-upload-zone{
-  border:1.5px dashed var(--blue-deep);border-radius:var(--radius-lg);padding:48px 32px;
-  text-align:center;cursor:pointer;transition:border-color .35s,background .35s;
-  background:var(--surface);position:relative;overflow:hidden;
-}
-.diag-upload-zone:hover,.diag-upload-zone.drag{border-color:var(--blue);background:var(--surface-strong);}
-.diag-upload-icon{width:56px;height:56px;border-radius:50%;background:rgba(34,195,232,.12);border:1px solid var(--blue-deep);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;color:var(--blue-light);}
-.diag-upload-icon svg{width:26px;height:26px;}
-.diag-upload-zone h3{font-size:19px;margin-bottom:8px;}
-.diag-upload-zone p{font-size:13.5px;color:var(--text-dim);max-width:280px;margin:0 auto;}
-.diag-upload-zone input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
-.diag-preview-wrap{position:relative;margin-top:20px;display:none;}
-.diag-preview-img{width:100%;border-radius:var(--radius-md);border:1px solid var(--line);aspect-ratio:4/3;object-fit:cover;}
-.diag-preview-overlay{position:absolute;inset:0;border-radius:var(--radius-md);background:linear-gradient(to top,rgba(6,7,10,.85) 0%,transparent 55%);display:flex;align-items:flex-end;padding:18px;}
-.diag-preview-change{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:var(--blue-light);cursor:pointer;}
-.diag-scan-bar{
-  position:absolute;top:0;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,transparent,var(--blue-light),transparent);
-  animation:scanAnim 1.8s ease-in-out infinite;display:none;
-}
-@keyframes scanAnim{0%{top:0%;}100%{top:100%;}}
-.diag-btn-wrap{margin-top:24px;}
-.diag-btn-wrap .btn{width:100%;gap:10px;}
-.diag-btn-wrap .btn svg{width:20px;height:20px;}
-.diag-btn-wrap .btn.loading{opacity:.7;pointer-events:none;}
-.diag-btn-wrap .btn.error{background:linear-gradient(135deg,#e69485,var(--danger));box-shadow:0 8px 30px -6px rgba(224,114,92,.4);}
-.diag-result{display:none;flex-direction:column;gap:0;}
-.diag-result.visible{display:flex;}
-.diag-result-top{border:1px solid var(--line);border-radius:var(--radius-lg) var(--radius-lg) 0 0;padding:32px;background:var(--bg-rise);}
-.diag-score-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;}
-.diag-score-label{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--text-faint);}
-.diag-score-val{font-family:'Space Grotesk',sans-serif;font-size:40px;color:var(--blue-light);}
-.diag-score-sub{font-size:12.5px;color:var(--text-faint);}
-.diag-bars{display:flex;flex-direction:column;gap:12px;}
-.diag-bar-row{display:grid;grid-template-columns:150px 1fr auto;align-items:center;gap:12px;font-size:12.5px;}
-.diag-bar-track{height:6px;border-radius:100px;background:rgba(255,255,255,.08);overflow:hidden;}
-.diag-bar-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--blue-deep),var(--blue));transition:width 1.2s cubic-bezier(.16,.84,.44,1);}
-.diag-bar-pct{color:var(--blue-light);font-size:12px;text-align:right;font-family:'JetBrains Mono',monospace;white-space:nowrap;}
-.diag-result-mid{border:1px solid var(--line);border-top:none;padding:28px 32px;background:var(--bg-alt);display:flex;flex-direction:column;gap:14px;}
-.diag-pack-rec{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
-.diag-pack-badge{background:linear-gradient(135deg,var(--blue-light),var(--blue));color:#04070f;font-weight:700;font-size:11px;padding:6px 16px;border-radius:100px;white-space:nowrap;}
-.diag-pack-name{font-family:'Space Grotesk',sans-serif;font-size:20px;}
-.diag-pack-reason{font-size:13.5px;color:var(--text-dim);line-height:1.6;}
-.diag-improve{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ok);}
-.diag-findings{display:flex;flex-direction:column;gap:8px;}
-.diag-finding{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text-dim);}
-.diag-finding::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--blue-light);flex-shrink:0;margin-top:5px;}
-.diag-result-bot{border:1px solid var(--line);border-top:none;border-radius:0 0 var(--radius-lg) var(--radius-lg);padding:24px 32px;background:var(--bg-rise);display:flex;gap:14px;}
-.diag-result-bot .btn{flex:1;}
-.diag-placeholder{display:flex;flex-direction:column;gap:18px;padding:40px 0;}
-.diag-placeholder-item{display:flex;gap:16px;align-items:flex-start;}
-.diag-placeholder-icon{width:42px;height:42px;border-radius:50%;background:var(--surface);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--blue-light);}
-.diag-placeholder-icon svg{width:20px;height:20px;}
-.diag-placeholder-item h4{font-size:14.5px;font-weight:600;margin-bottom:4px;}
-.diag-placeholder-item p{font-size:13px;color:var(--text-dim);}
-.diag-reset{background:none;border:none;color:var(--text-faint);font-size:12px;font-family:'JetBrains Mono',monospace;letter-spacing:.06em;cursor:pointer;margin-top:8px;transition:color .3s;}
-.diag-reset:hover{color:var(--blue-light);}
-.diag-system-tag{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;color:var(--blue-light);text-transform:uppercase;margin-bottom:16px;}
-.diag-report-meta{display:flex;align-items:center;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.06em;color:var(--text-faint);text-transform:uppercase;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--line-soft);gap:12px;}
-.diag-report-meta .live{display:flex;align-items:center;gap:7px;}
-.diag-report-meta .dot{width:6px;height:6px;border-radius:50%;background:var(--ok);flex-shrink:0;animation:pulseDot 2s ease-in-out infinite;}
-@keyframes pulseDot{0%,100%{opacity:1;}50%{opacity:.35;}}
-.diag-bar-status{font-size:10.5px;margin-left:8px;font-family:'JetBrains Mono',monospace;}
-.diag-bar-status.ok{color:var(--ok);}
-.diag-bar-status.warn{color:var(--warn);}
-.diag-bar-status.danger{color:var(--danger);}
-.diag-result-top{position:relative;}
-.diag-result-top::before,.diag-result-top::after,
-.diag-result-bot::before,.diag-result-bot::after{
-  content:'';position:absolute;width:13px;height:13px;pointer-events:none;
-}
-.diag-result-top::before{top:-1px;left:-1px;border-top:1.5px solid var(--blue-deep);border-left:1.5px solid var(--blue-deep);}
-.diag-result-top::after{top:-1px;right:-1px;border-top:1.5px solid var(--blue-deep);border-right:1.5px solid var(--blue-deep);}
-.diag-result-bot{position:relative;}
-.diag-result-bot::before{bottom:-1px;left:-1px;border-bottom:1.5px solid var(--blue-deep);border-left:1.5px solid var(--blue-deep);}
-.diag-result-bot::after{bottom:-1px;right:-1px;border-bottom:1.5px solid var(--blue-deep);border-right:1.5px solid var(--blue-deep);}
-
 /* ============ PROCESO / PROTOCOLO ============ */
 .process-track{display:flex;flex-direction:column;gap:14px;position:relative;}
 .process-step{
@@ -1274,94 +1194,21 @@ footer{border-top:1px solid var(--line-soft);padding:70px 0 32px;background:var(
 .footer-certs span{border:1px solid var(--line-soft);border-radius:100px;padding:6px 12px;}
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:50px;padding-top:24px;border-top:1px solid var(--line-soft);font-size:12px;color:var(--text-faint);flex-wrap:wrap;gap:12px;}
 
-/* ============ PRECISION ADVISOR (chat widget) ============ */
-.advisor-toggle{
+/* ============ WHATSAPP FLOATING BUTTON ============ */
+.wa-float{
   position:fixed;bottom:26px;right:26px;z-index:200;width:62px;height:62px;border-radius:50%;
-  background:linear-gradient(135deg,var(--blue-light),var(--blue));display:flex;align-items:center;justify-content:center;
-  box-shadow:0 10px 30px -6px var(--blue-glow);animation:pulseBlue 3s ease-in-out infinite;
-  padding:0;overflow:hidden;border:none;
+  background:#25D366;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 30px -6px rgba(37,211,102,.55);animation:pulseWa 3s ease-in-out infinite;
+  border:none;
 }
-.advisor-toggle svg{width:25px;height:25px;color:#04070f;}
-.advisor-hint{
-  position:fixed;bottom:98px;right:26px;z-index:199;max-width:280px;
-  background:rgba(10,11,15,.97);backdrop-filter:blur(14px);border:1px solid var(--blue-deep);
-  border-radius:16px;padding:18px 34px 18px 18px;box-shadow:0 24px 60px -12px rgba(0,0,0,.6),0 0 0 1px rgba(34,195,232,.05);
-  opacity:0;transform:translateY(10px) scale(.96);pointer-events:none;
-  transition:opacity .4s var(--ease),transform .4s var(--ease);
-}
-.advisor-hint.show{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
-.advisor-hint-title{font-family:'Space Grotesk',sans-serif;font-size:14.5px;font-weight:600;color:var(--text);margin:0 0 6px;line-height:1.35;}
-.advisor-hint-text{font-size:12.5px;color:var(--text-dim);line-height:1.55;margin:0 0 14px;}
-.advisor-hint-cta{
-  display:inline-flex;align-items:center;gap:8px;width:100%;justify-content:center;
-  background:linear-gradient(135deg,var(--blue-light),var(--blue));color:#04070f;
-  font-weight:700;font-size:12.5px;letter-spacing:.01em;padding:11px 16px;border-radius:100px;border:none;
-  box-shadow:0 8px 24px -6px var(--blue-glow);transition:transform .35s var(--ease),box-shadow .35s var(--ease);
-}
-.advisor-hint-cta:hover{transform:translateY(-2px);box-shadow:0 14px 34px -6px var(--blue-glow);}
-.advisor-hint-cta svg{width:14px;height:14px;transition:transform .3s var(--ease);}
-.advisor-hint-cta:hover svg{transform:translateX(3px);}
-.advisor-hint::after{
-  content:'';position:absolute;bottom:-7px;right:30px;width:14px;height:14px;
-  background:rgba(10,11,15,.97);border-right:1px solid var(--blue-deep);border-bottom:1px solid var(--blue-deep);
-  transform:rotate(45deg);
-}
-.advisor-hint-close{
-  position:absolute;top:6px;right:6px;width:22px;height:22px;border-radius:50%;
-  background:transparent;border:none;color:var(--text-faint);font-size:16px;line-height:1;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-}
-.advisor-hint-close:hover{color:var(--text);}
-@keyframes pulseBlue{0%,100%{box-shadow:0 10px 30px -6px var(--blue-glow);}50%{box-shadow:0 10px 42px -2px var(--blue-glow);}}
-.advisor-panel{
-  position:fixed;bottom:100px;right:26px;z-index:200;width:380px;max-width:calc(100vw - 40px);height:560px;max-height:72vh;
-  background:rgba(10,11,15,0.94);backdrop-filter:blur(18px);border:1px solid var(--line);border-radius:var(--radius-lg);
-  display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px -20px rgba(0,0,0,.6);
-  transform:scale(.92) translateY(16px);opacity:0;pointer-events:none;transition:transform .35s var(--ease),opacity .3s;
-}
-.advisor-panel.open{transform:scale(1) translateY(0);opacity:1;pointer-events:auto;}
-.advisor-head{display:flex;align-items:center;gap:12px;padding:18px 20px;border-bottom:1px solid var(--line-soft);}
-.advisor-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--blue-light),var(--blue));display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.advisor-avatar svg{width:17px;height:17px;color:#04070f;}
-.advisor-head h4{font-size:14px;font-weight:600;font-family:'Space Grotesk',sans-serif;}
-.advisor-head span{font-size:11px;color:var(--text-faint);display:flex;align-items:center;gap:5px;}
-.advisor-head span::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--ok);}
-.advisor-close{margin-left:auto;width:30px;height:30px;display:flex;align-items:center;justify-content:center;color:var(--text-faint);border-radius:50%;}
-.advisor-close:hover{background:var(--surface);color:var(--text);}
-.advisor-close svg{width:16px;height:16px;}
-.advisor-body{flex:1;overflow-y:auto;padding:18px 20px;display:flex;flex-direction:column;gap:14px;}
-.amsg{max-width:85%;font-size:13.5px;line-height:1.5;padding:11px 15px;border-radius:14px;}
-.amsg.bot{align-self:flex-start;background:var(--surface);border:1px solid var(--line-soft);border-bottom-left-radius:4px;}
-.amsg.user{align-self:flex-end;background:linear-gradient(135deg,var(--blue-deep),#08222a);color:var(--blue-light);border-bottom-right-radius:4px;}
-.amsg.typing{display:flex;gap:4px;align-items:center;padding:14px 16px;}
-.amsg.typing span{width:6px;height:6px;border-radius:50%;background:var(--text-faint);animation:typingDot 1.2s infinite;}
-.amsg.typing span:nth-child(2){animation-delay:.2s;}
-.amsg.typing span:nth-child(3){animation-delay:.4s;}
-@keyframes typingDot{0%,60%,100%{opacity:.3;transform:translateY(0);}30%{opacity:1;transform:translateY(-3px);}}
-.advisor-summary{margin:6px 0 4px;border:1px solid var(--blue-deep);background:rgba(34,195,232,.08);border-radius:var(--radius-sm);padding:14px 16px;display:flex;flex-direction:column;gap:10px;}
-.advisor-summary p{font-size:12px;color:var(--text-dim);}
-.advisor-evaluation{margin:6px 0 4px;border:1px solid var(--line);background:var(--surface-strong);border-radius:var(--radius-sm);padding:18px 18px 16px;display:flex;flex-direction:column;gap:13px;}
-.advisor-evaluation .eval-head{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-light);display:flex;align-items:center;gap:8px;padding-bottom:12px;border-bottom:1px solid var(--line-soft);}
-.advisor-evaluation .eval-row{display:flex;flex-direction:column;gap:3px;}
-.advisor-evaluation .eval-row .lbl{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-faint);}
-.advisor-evaluation .eval-row .val{font-size:13.5px;color:var(--text);font-family:'Space Grotesk',sans-serif;font-weight:600;line-height:1.4;}
-.advisor-evaluation .eval-row .val.dim{font-family:'Inter',sans-serif;font-weight:400;font-size:12.5px;color:var(--text-dim);}
-.advisor-evaluation .eval-cta{margin-top:2px;display:flex;flex-direction:column;gap:9px;}
-.advisor-evaluation .eval-cta p{font-size:11.5px;color:var(--text-faint);}
-.advisor-foot{padding:14px 16px;border-top:1px solid var(--line-soft);display:flex;gap:10px;}
-.advisor-foot input{flex:1;background:var(--surface);border:1px solid var(--line);border-radius:100px;padding:11px 16px;color:var(--text);font-size:16px;font-family:'Inter',sans-serif;}
-.advisor-foot input:focus{border-color:var(--blue);}
-.advisor-foot input:disabled{opacity:.5;}
-.advisor-send{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--blue-light),var(--blue));display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:opacity .3s;}
-.advisor-send:disabled{opacity:.45;cursor:default;}
-.advisor-send svg{width:16px;height:16px;color:#04070f;}
+.wa-float svg{width:30px;height:30px;color:#fff;}
+@keyframes pulseWa{0%,100%{box-shadow:0 10px 30px -6px rgba(37,211,102,.55);}50%{box-shadow:0 10px 42px -2px rgba(37,211,102,.55);}}
 
 /* ============ RESPONSIVE ============ */
 @media (max-width:1024px){
   .extra-grid{grid-template-columns:repeat(2,1fr);}
   .exp-row{grid-template-columns:1fr;gap:40px;}
   .gallery-grid{grid-template-columns:repeat(2,1fr);}
-  .diag-wrap{grid-template-columns:1fr;}
   .price-grid{grid-template-columns:1fr 1fr;}
   .coverage-wrap{grid-template-columns:1fr;}
   .home-service-block{grid-template-columns:1fr;gap:36px;margin-top:50px;padding-top:50px;}
@@ -1383,9 +1230,6 @@ footer{border-top:1px solid var(--line-soft);padding:70px 0 32px;background:var(
   .need-grid .need-btn:last-child:nth-child(odd){grid-column:1 / -1;}
   .footer-grid{flex-direction:column;gap:24px;}
   .footer-bottom{flex-direction:column;align-items:flex-start;}
-  .advisor-panel{right:12px;left:12px;width:auto;bottom:88px;max-height:76vh;}
-  .advisor-toggle{right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));}
-  .advisor-hint{right:14px;bottom:calc(88px + env(safe-area-inset-bottom,0px));max-width:250px;padding:16px 30px 16px 16px;}
   .work-grid{grid-template-columns:1fr;}
   .pillar-grid{grid-template-columns:1fr;}
   .pm-overlay{padding:0;}
@@ -1405,7 +1249,6 @@ footer{border-top:1px solid var(--line-soft);padding:70px 0 32px;background:var(
   .pm-stat-strip{gap:20px;}
   .pm-cta-row{position:sticky;bottom:0;background:rgba(8,9,13,.98);margin:24px -20px 0;padding:16px 20px calc(16px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);}
   .pm-lower-photo-bg{margin:0 -20px;padding:28px 20px 4px;}
-  .advisor-hint::after{right:20px;}
   .position-strip{padding:70px 0;}
   .position-strip .not-list{gap:16px;}
   .position-strip .yes-list{gap:10px;}
@@ -1423,10 +1266,6 @@ footer{border-top:1px solid var(--line-soft);padding:70px 0 32px;background:var(
   .perm-row:not(.head) span:nth-child(3)::before{content:'Duración: ';color:var(--text-faint);}
   .perm-row:not(.head) span:nth-child(4)::before{content:'Garantía: ';color:var(--text-faint);}
 
-  .diag-result-bot{flex-direction:column;}
-  .diag-bar-row{grid-template-columns:100px 1fr auto;gap:8px;font-size:11px;}
-  .diag-bar-status{display:block;font-size:9.5px;margin-left:0;}
-  .diag-report-meta{font-size:9px;flex-wrap:wrap;}
   .glass[style*="padding:40px"]{padding:26px 20px !important;}
   .glass[style*="padding:90px"]{padding:48px 22px !important;}
   .exp-row{padding:44px 22px;gap:32px;border-radius:var(--radius-md);}
@@ -1442,7 +1281,6 @@ footer{border-top:1px solid var(--line-soft);padding:70px 0 32px;background:var(
   .corr-tabs{flex-wrap:wrap;}
   .corr-bar-row{grid-template-columns:96px 1fr 36px;gap:8px;}
   .corr-bar-label{font-size:11px;}
-  .diag-upload-zone{padding:32px 20px;}
   .nav-social{gap:14px;}
   .section-head{margin-bottom:40px;}
   .h2{font-size:clamp(28px,7.5vw,36px);}
@@ -1473,7 +1311,6 @@ footer{border-top:1px solid var(--line-soft);padding:70px 0 32px;background:var(
   .pm-modal .extra-grid{grid-template-columns:1fr;}
 }
 @media (max-width:768px){
-  .advisor-panel{height:70vh;}
   .amsg{max-width:90%;}
   #nosotros .glass > div[style*="min-width:280px"],
   #nosotros .glass > div[style*="min-width:260px"]{min-width:100% !important;}
@@ -1625,13 +1462,12 @@ footer{border-top:1px solid var(--line-soft);padding:70px 0 32px;background:var(
     <a href="#" id="navOpenNosotros" class="mm-link nav-desktop-only"><span class="mm-num">01</span><span class="mm-label" data-i18n="nav.about">Nosotros</span><svg class="mm-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <a href="#proceso" class="mm-link"><span class="mm-num">02</span><span class="mm-label" data-i18n="nav.process">Nuestro Proceso</span><svg class="mm-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <a href="#servicios" class="mm-link"><span class="mm-num">03</span><span class="mm-label" data-i18n="nav.services">Servicios</span><svg class="mm-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-    <a href="#diagnostico" class="mm-link"><span class="mm-num">04</span><span class="mm-label" data-i18n="nav.diag">Diagnóstico Visual</span><svg class="mm-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-    <a href="#precios" class="mm-link"><span class="mm-num">05</span><span class="mm-label" data-i18n="nav.pricing">Servicios y Precios</span><svg class="mm-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-    <a href="#cobertura" class="mm-link"><span class="mm-num">06</span><span class="mm-label" data-i18n="nav.coverage">Cobertura</span><svg class="mm-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-    <a href="#faq" class="mm-link"><span class="mm-num">07</span><span class="mm-label" data-i18n="nav.faq">Preguntas</span><svg class="mm-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a href="#precios" class="mm-link"><span class="mm-num">04</span><span class="mm-label" data-i18n="nav.pricing">Servicios y Precios</span><svg class="mm-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a href="#cobertura" class="mm-link"><span class="mm-num">05</span><span class="mm-label" data-i18n="nav.coverage">Cobertura</span><svg class="mm-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a href="#faq" class="mm-link"><span class="mm-num">06</span><span class="mm-label" data-i18n="nav.faq">Preguntas</span><svg class="mm-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   </nav>
   <div class="mm-cta-wrap">
-    <a href="#diagnostico" class="btn btn-blue" data-i18n="nav.cta">Solicitar Diagnóstico</a>
+    <a href="#precios" class="btn btn-blue" data-i18n="nav.cta">Solicitar Presupuesto</a>
   </div>
   <div class="mm-bottom">
     <a href="tel:+13464982330" class="mm-phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 2 .7 3a2 2 0 01-.5 2.1L8 10a16 16 0 006 6l1.2-1.3a2 2 0 012.1-.5c1 .4 2 .6 3 .7a2 2 0 011.7 2z"/></svg>+1 346-498-2330</a>
@@ -1947,89 +1783,6 @@ footer{border-top:1px solid var(--line-soft);padding:70px 0 32px;background:var(
   </div>
 </section>
 
-<!-- AI DIAGNÓSTICO -->
-<section class="section section-alt section-bg-photo" id="diagnostico" style="--photo-bg:url('https://res.cloudinary.com/dgp7uhps3/image/upload/v1784335357/IMG_8948_fqqmzs.jpg');">
-  <div class="container">
-    <div class="section-head reveal">
-      <p class="eyebrow" data-i18n="diag.eyebrow">DIAGNÓSTICO VISUAL · TECNOLOGÍA EXCLUSIVA</p>
-      <h2 class="h2" data-i18n="diag.h2">Subí una foto. El sistema mide el estado real de tu pintura.</h2>
-      <p class="lead" data-i18n="diag.lead">Análisis de pintura, brillo, swirls, contaminación, oxidación y nivel de protección actual — con la mejora esperada al aplicar el proceso recomendado.</p>
-    </div>
-    <div class="diag-wrap">
-      <div>
-        <div class="diag-upload-zone reveal" id="diagZone">
-          <div class="diag-scan-bar" id="diagScanBar"></div>
-          <input type="file" accept="image/*" id="diagFileInput" aria-label="Subir foto del vehículo">
-          <div id="diagZoneContent">
-            <div class="diag-upload-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-            </div>
-            <h3 data-i18n="diag.upload.h">Subí la foto de tu vehículo</h3>
-            <p data-i18n="diag.upload.p">Arrastrá una imagen o tocá para seleccionar. Pintura, interior o ambos.</p>
-          </div>
-          <div class="diag-preview-wrap" id="diagPreviewWrap">
-            <img class="diag-preview-img" id="diagPreviewImg" src="" alt="Vista previa">
-            <div class="diag-preview-overlay"><span class="diag-preview-change" id="diagChangeBtn" data-i18n="diag.change">↑ Cambiar foto</span></div>
-          </div>
-        </div>
-        <div class="diag-btn-wrap reveal">
-          <button class="btn btn-blue" id="diagAnalyzeBtn" disabled>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
-            <span id="diagBtnText" data-i18n="diag.btn.initial">Seleccioná una foto primero</span>
-          </button>
-          <button class="diag-reset" id="diagResetBtn" style="display:none;" data-i18n="diag.reset">✕ Nuevo diagnóstico</button>
-        </div>
-      </div>
-      <div>
-        <div class="diag-placeholder reveal" id="diagPlaceholder">
-          <div class="diag-placeholder-item">
-            <div class="diag-placeholder-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
-            <div><h4 data-i18n="diag.ph1.h">Estado de pintura y brillo</h4><p data-i18n="diag.ph1.p">Detecta swirls, hologramas, oxidación y pérdida de profundidad óptica.</p></div>
-          </div>
-          <div class="diag-placeholder-item">
-            <div class="diag-placeholder-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-            <div><h4 data-i18n="diag.ph2.h">Nivel de protección actual</h4><p data-i18n="diag.ph2.p">Estima cuánta protección cerámica o física le queda al vehículo hoy.</p></div>
-          </div>
-          <div class="diag-placeholder-item">
-            <div class="diag-placeholder-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-            <div><h4 data-i18n="diag.ph3.h">Recomendación con % de mejora</h4><p data-i18n="diag.ph3.p">Corrección de pintura, Ceramic Coating u otro servicio — con la mejora esperada.</p></div>
-          </div>
-        </div>
-        <div class="diag-result" id="diagResult">
-          <div class="diag-result-top">
-            <p class="diag-system-tag" data-i18n="diag.systag">Clean Clean Vision System™ — Informe de condición</p>
-            <div class="diag-report-meta">
-              <span class="live"><span class="dot"></span><span data-i18n="diag.done">Análisis completado</span></span>
-              <span id="diagReportRef"></span>
-            </div>
-            <div class="diag-score-row">
-              <div>
-                <p class="diag-score-label" data-i18n="diag.score.label">ESTADO GENERAL DEL VEHÍCULO</p>
-                <p class="diag-score-val" id="diagScoreVal">--</p>
-                <p class="diag-score-sub" id="diagScoreSub" data-i18n="diag.score.sub">Analizando...</p>
-              </div>
-            </div>
-            <div class="diag-bars" id="diagBarsWrap"></div>
-          </div>
-          <div class="diag-result-mid" id="diagResultMid">
-            <div class="diag-pack-rec">
-              <span class="diag-pack-badge" id="diagPackBadge" data-i18n="diag.recommended">RECOMENDADO</span>
-              <span class="diag-pack-name" id="diagPackName"></span>
-              <span class="diag-improve" id="diagImprove"></span>
-            </div>
-            <p class="diag-pack-reason" id="diagPackReason"></p>
-            <div class="diag-findings" id="diagFindings"></div>
-          </div>
-          <div class="diag-result-bot">
-            <a class="btn btn-blue btn-sm" id="diagWaBtn" target="_blank" href="#" data-i18n="diag.bookthis">Reservar este servicio</a>
-            <a class="btn btn-outline btn-sm" href="#precios" data-i18n="diag.seeall">Ver todas las experiencias</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 
 <!-- PROCESO / PROTOCOLO -->
 <section class="section section-bg-photo" id="proceso" style="--photo-bg:url('https://res.cloudinary.com/dgp7uhps3/image/upload/v1784328283/IMG_8928_fbqvrr.jpg');">
@@ -2090,7 +1843,7 @@ footer{border-top:1px solid var(--line-soft);padding:70px 0 32px;background:var(
       </div>
     </div>
     <div class="process-cta reveal">
-      <a href="#diagnostico" class="btn btn-outline btn-sm" data-i18n="proceso.cta">Empezar con tu diagnóstico</a>
+      <a href="#precios" class="btn btn-outline btn-sm" data-i18n="proceso.cta">Elegí tu experiencia</a>
       <p data-i18n="proceso.ctap">El mismo protocolo, sin importar la experiencia que elijas.</p>
     </div>
   </div>
@@ -2164,7 +1917,7 @@ footer{border-top:1px solid var(--line-soft);padding:70px 0 32px;background:var(
       <h2 class="h2" data-i18n="ctafinal.h2">Tu vehículo merece una limpieza real</h2>
       <p class="lead" style="margin:18px auto 36px;" data-i18n="ctafinal.lead">Agendá tu servicio hoy y dejá que nosotros vayamos hasta ti.</p>
       <div class="cta-final-btns" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-        <a href="#diagnostico" class="btn btn-blue" data-i18n="nav.cta">Solicitar Diagnóstico</a>
+        <a href="#precios" class="btn btn-blue" data-i18n="nav.cta">Solicitar Presupuesto</a>
         <a href="#" id="ctaFinalWaBtn" class="btn btn-outline" target="_blank" rel="noopener" data-i18n="ctafinal.wa">Agendar turno por WhatsApp</a>
       </div>
     </div>
@@ -2217,28 +1970,10 @@ footer{border-top:1px solid var(--line-soft);padding:70px 0 32px;background:var(
   </div>
 </footer>
 
-<!-- PRECISION ADVISOR WIDGET -->
-<div class="advisor-hint" id="advisorHint">
-  <button class="advisor-hint-close" id="advisorHintClose" aria-label="Cerrar">×</button>
-  <p class="advisor-hint-title" data-i18n="advisor.hint.title">Tu auto merece algo mejor que un lavado rápido.</p>
-  <p class="advisor-hint-text" data-i18n="advisor.hint.text">Contame qué necesita tu vehículo y te digo, al instante, el servicio exacto que le conviene.</p>
-  <button class="advisor-hint-cta" id="advisorHintCta"><span data-i18n="advisor.hint.cta">Diagnosticar mi vehículo</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-</div>
-<button class="advisor-toggle" id="advisorToggle" aria-label="Abrir asistente">
-  <img src="https://res.cloudinary.com/dgp7uhps3/image/upload/v1784319156/IMG_8907_rdgdlp_t6qf9b.png" alt="Clean Clean Mobile Detail" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
-</button>
-<div class="advisor-panel" id="advisorPanel">
-  <div class="advisor-head">
-    <div class="advisor-avatar" style="overflow:hidden;"><img src="https://res.cloudinary.com/dgp7uhps3/image/upload/v1784319156/IMG_8907_rdgdlp_t6qf9b.png" alt="Clean Clean Mobile Detail" style="width:100%;height:100%;object-fit:cover;"></div>
-    <div><h4>Clean Clean Assistant</h4><span data-i18n="advisor.online">En línea</span></div>
-    <button class="advisor-close" id="advisorClose" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
-  </div>
-  <div class="advisor-body" id="advisorBody"></div>
-  <form class="advisor-foot" id="advisorForm">
-    <input type="text" id="advisorInput" placeholder="Escribí tu mensaje..." autocomplete="off" data-i18n-attr="placeholder" data-i18n="advisor.input.placeholder">
-    <button type="submit" class="advisor-send" aria-label="Enviar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l18-8-8 18-3-7-7-3z"/></svg></button>
-  </form>
-</div>
+<!-- WHATSAPP FLOATING BUTTON -->
+<a href="https://wa.me/13464982330?text=Hola!%20Quiero%20agendar%20un%20servicio%20con%20Clean%20Clean%20Mobile%20Detail." target="_blank" rel="noopener" class="wa-float" id="waFloatBtn" aria-label="Chatear por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.07L2 22l5.06-1.33A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18a7.95 7.95 0 01-4.06-1.11l-.29-.17-3 .79.8-2.93-.19-.3A7.96 7.96 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8zm4.29-5.71c-.23-.12-1.37-.68-1.58-.76-.21-.08-.37-.12-.52.12-.15.23-.6.76-.74.92-.14.15-.27.17-.5.06-.23-.12-.98-.36-1.87-1.15-.69-.62-1.16-1.38-1.29-1.61-.14-.23-.01-.36.1-.47.11-.11.23-.27.35-.41.11-.14.15-.23.23-.39.08-.15.04-.29-.02-.41-.06-.12-.52-1.25-.71-1.71-.19-.45-.38-.39-.52-.4h-.44c-.15 0-.4.06-.61.29-.21.23-.8.78-.8 1.9 0 1.12.82 2.2.93 2.35.12.15 1.61 2.46 3.9 3.45.55.24.97.38 1.31.48.55.17 1.05.15 1.44.09.44-.07 1.37-.56 1.56-1.1.19-.54.19-1 .13-1.1-.06-.1-.21-.15-.44-.27z"/></svg>
+</a>
 
 <!-- STUDIO / NOSOTROS MODAL -->
 <div class="pm-overlay pm-overlay--full" id="studioModalOverlay">
@@ -2338,8 +2073,8 @@ const WHATSAPP_NUMBER = "13464982330"; // Clean Clean Mobile Detail · +1 346-49
 
 /* ================= I18N ENGINE (ES / EN) ================= */
 const EN = {
-"nav.about":"About Us","nav.process":"Our Process","nav.services":"Services","nav.diag":"Visual Diagnostic",
-"nav.pricing":"Services & Pricing","nav.coverage":"Coverage","nav.faq":"FAQ","nav.cta":"Request Diagnostic","mm.menu":"MENU","nosotros.videotag":"VIDEO",
+"nav.about":"About Us","nav.process":"Our Process","nav.services":"Services",
+"nav.pricing":"Services & Pricing","nav.coverage":"Coverage","nav.faq":"FAQ","nav.cta":"Request a Quote","mm.menu":"MENU","nosotros.videotag":"VIDEO",
 "hero.rating.text":"· 26 reviews on Google",
 "hero.eyebrow":"CLEAN CLEAN MOBILE DETAIL · HOUSTON, TX · WE COME TO YOU",
 "hero.sub.mobile":"Mobile interior & exterior detailing, paint correction and ceramic coating. We come to you.",
@@ -2397,16 +2132,6 @@ const EN = {
 "trabajos.cta":"View @_clean_clean_md",
 "need.eyebrow":"QUICK ADVISOR","need.h2":"What does your vehicle actually need?",
 "need.lead":"Pick the situation that best matches yours and we'll tell you which service fits.",
-"diag.eyebrow":"VISUAL DIAGNOSTIC · EXCLUSIVE TECHNOLOGY","diag.h2":"Upload a photo. The system measures your paint's real condition.",
-"diag.lead":"Analysis of paint, gloss, swirls, contamination, oxidation and current protection level — with the expected improvement from the recommended process.",
-"diag.upload.h":"Upload a photo of your vehicle","diag.upload.p":"Drag an image or tap to select. Paint, interior, or both.",
-"diag.change":"↑ Change photo","diag.btn.initial":"Select a photo first","diag.reset":"✕ New diagnostic",
-"diag.ph1.h":"Paint condition and gloss","diag.ph1.p":"Detects swirls, holograms, oxidation and loss of optical depth.",
-"diag.ph2.h":"Current protection level","diag.ph2.p":"Estimates how much ceramic or physical protection the vehicle has left.",
-"diag.ph3.h":"Recommendation with % improvement","diag.ph3.p":"Paint correction, Ceramic Coating or another service — with the expected improvement.",
-"diag.systag":"Clean Clean Vision System™ — Condition Report","diag.done":"Analysis complete",
-"diag.score.label":"OVERALL VEHICLE CONDITION","diag.score.sub":"Analyzing...","diag.recommended":"RECOMMENDED",
-"diag.bookthis":"Book this service","diag.seeall":"See all services",
 "proceso.eyebrow":"OUR PROTOCOL","proceso.h2":"A protocol, not a production line.",
 "proceso.lead":"From diagnosis to delivery, every vehicle goes through the same process — documented, measurable, with no extra steps.",
 "proceso.1.h":"Initial diagnosis","proceso.1.p":"We assess the real condition of the paint, current protection level and the vehicle's specific conditions. Before touching anything, we already know exactly what it needs.","proceso.1.tag":"No assumptions",
@@ -2415,7 +2140,7 @@ const EN = {
 "proceso.4.h":"Correction","proceso.4.p":"We correct swirls, holograms and oxidation following exactly what the diagnosis indicated — not one step more, not one less.","proceso.4.tag":"Precision, not volume",
 "proceso.5.h":"Protection","proceso.5.p":"We apply the ceramic coating or corresponding protection. The seal that makes the result last over time.","proceso.5.tag":"Results that last",
 "proceso.6.h":"Quality control and delivery","proceso.6.p":"Final inspection under cross lighting. You get your vehicle back with the documented result and a suggested maintenance plan.","proceso.6.tag":"The result speaks for itself",
-"proceso.cta":"Start with your diagnostic","proceso.ctap":"The same protocol, no matter which service you choose.",
+"proceso.cta":"Choose your experience","proceso.ctap":"The same protocol, no matter which service you choose.",
 "pricing.eyebrow":"SERVICES & PRICING","pricing.h2":"Our core services",
 "pricing.lead":"The final price depends on your vehicle's size and condition. Message us on WhatsApp for an exact quote.",
 "pricing.note":"* Final quote confirmed via WhatsApp or during the visual diagnostic.",
@@ -2433,9 +2158,6 @@ const EN = {
 "reviews.summary.count":"· 26 reviews on Google",
 "reviews.google":"See reviews on Google","reviews.fb":"See on Facebook",
 "footer.mobile":"MOBILE SERVICE","footer.rights":"© 2026 Clean Clean Mobile Detail. All rights reserved.","footer.tag":"We care for your car, we come to you.",
-"advisor.hint.title":"Your car deserves better than a quick wash.",
-"advisor.hint.text":"Tell me what your vehicle needs and I'll instantly tell you the exact service that's right for it.",
-"advisor.hint.cta":"Diagnose my vehicle","advisor.online":"Online","advisor.input.placeholder":"Type your message...",
 "modal.back":"Back","modal.eyebrow":"BEHIND CLEAN CLEAN MOBILE DETAIL","modal.title":"Mobile detailing, done right",
 "modal.p1":"Clean Clean Mobile Detail was born in Houston, TX with a simple idea: bring quality detailing straight to wherever you are, without you having to waste time at a shop.",
 "modal.p2":"We offer interior and exterior cleaning, paint correction and ceramic coating, among other services — with our own equipment, water and products, ready to work at your home or office.",
@@ -3186,436 +2908,6 @@ if(typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined'){
 }else{
   document.querySelectorAll('.reveal').forEach(el=>{ el.style.opacity=1; el.style.transform='none'; });
 }
-
-/* ================= PRECISION ADVISOR CHAT ================= */
-const advisorToggle = document.getElementById('advisorToggle');
-const advisorPanel = document.getElementById('advisorPanel');
-const advisorClose = document.getElementById('advisorClose');
-const advisorBody = document.getElementById('advisorBody');
-const advisorForm = document.getElementById('advisorForm');
-const advisorInput = document.getElementById('advisorInput');
-document.getElementById('navOpenAdvisor')?.addEventListener('click', (e)=>{ e.preventDefault(); openAdvisor(); });
-
-function getSystemPrompt(){
-  const langLine = currentLang === 'en'
-    ? 'La persona tiene el sitio en inglés — arrancá y respondé en inglés por defecto, salvo que ella te escriba en español, en cuyo caso seguí en español.'
-    : 'La persona tiene el sitio en español — arrancá y respondé en español por defecto, salvo que ella te escriba en inglés, en cuyo caso seguí en inglés.';
-  return `Sos parte del equipo de Clean Clean Mobile Detail, un servicio móvil de detallado automotriz en Houston, TX y áreas cercanas. No sos un chatbot ni una inteligencia artificial, y nunca lo mencionás — sos un asesor real coordinando una cita por chat.
-
-CÓMO HABLÁS
-Escribís como una persona real por WhatsApp: mensajes cortos (1 a 3 oraciones), naturales, cálidos, cercanos. Nunca hacés más de una pregunta por mensaje. Nunca hagas listas gigantes ni textos largos. Antes de preguntar algo nuevo, reconocé brevemente lo que la persona te contó (ej: "Entendido, un Toyota negro..." en vez de arrancar directo con la siguiente pregunta). Recordás todo lo que ya te dijeron durante la conversación y lo usás con naturalidad — nunca preguntás de nuevo algo que ya respondieron. ${langLine}
-
-TU OBJETIVO
-No es "responder preguntas". Es entender qué necesita el vehículo, recomendar el servicio correcto explicando siempre el motivo, resolver dudas con simpleza, generar confianza, y juntar los datos necesarios para coordinar la cita — sin presionar la venta en ningún momento y sin sonar vendedor.
-
-FLUJO NATURAL (adaptalo según lo que diga la persona, nunca sigas un guion rígido)
-1. Descubrir qué busca: limpiar el interior, proteger el auto, tiene rayones, perdió brillo, huele mal, lo quiere vender, no sabe bien qué necesita, etc. Si solo saluda, saludá de vuelta y preguntá en qué podés ayudar.
-2. Entender el vehículo: marca, modelo, año, color — de a una pregunta por vez.
-3. Entender el estado real y la ubicación (ciudad/zona dentro de Houston).
-4. Recomendar el servicio adecuado explicando SIEMPRE el motivo en 1-2 oraciones.
-5. Resolver dudas de forma simple si preguntan cuánto dura, qué diferencia hay, qué incluye.
-6. Cuando ya haya interés real, empezá a pedir de forma conversacional (nunca todo junto): nombre, ubicación, y una fecha aproximada que le venga bien.
-
-SERVICIOS QUE OFRECE CLEAN CLEAN MOBILE DETAIL
-- Interior & Exterior Detailing: limpieza a fondo, aspirado, shampoo de tapicería, exterior a mano.
-- Corrección de pintura: remoción de swirls, marcas y defectos superficiales.
-- Ceramic Coating: protección UV, repelencia al agua, mayor brillo y menor mantenimiento.
-- Mantenimiento a mano: lavados recurrentes para conservar el vehículo.
-- Eliminación de olores.
-- Restauración de faros.
-- Servicio 100% móvil: vamos hasta la ubicación del cliente en Houston, TX y áreas cercanas.
-
-REGLAS QUE NUNCA ROMPÉS
-- Nunca menciones que sos una IA, un chatbot, ni digas "como inteligencia artificial".
-- Nunca inventes un precio exacto: el precio final se confirma con el equipo según el estado y tamaño del vehículo, pero podés orientar qué servicio conviene y por qué.
-- Nunca prometas resultados imposibles ni exageres.
-- Nunca presiones la venta ni suenes insistente.
-- Nunca hagas más de una pregunta por mensaje.
-- Siempre explicá por qué recomendás un servicio.
-
-CIERRE DE LA CONVERSACIÓN
-Cuando ya tengas vehículo (marca/modelo, idealmente año y color), un objetivo o problema claro, el servicio recomendado, ubicación y una fecha aproximada, cerrá con una frase cálida invitando a confirmar (algo como "¿Te parece bien esta recomendación?"), y agregá — en una línea aparte al final del mensaje, sin ningún otro texto en esa línea — exactamente este formato: RESUMEN_JSON:{"nombre":"","vehiculo":"","color":"","ciudad":"","problema":"","objetivo":"","tratamiento":"","tiempo":"","fecha":""}
-
-Si falta un dato dejalo como cadena vacía, pero intentá tener al menos vehículo y servicio recomendado antes de cerrar. "vehiculo" es marca, modelo y año (ej: "Toyota Camry 2023"). "problema" resume en una frase corta el estado informado del auto. "objetivo" resume qué busca lograr el cliente. "tiempo" es tu estimación de horas de trabajo para ese servicio.`;
-}
-
-let advisorHistory = [];
-let advisorOpened = false;
-
-function addMsg(role, text){
-  const div = document.createElement('div');
-  div.className = 'amsg ' + (role==='user'?'user':'bot');
-  div.textContent = text;
-  advisorBody.appendChild(div);
-  advisorBody.scrollTop = advisorBody.scrollHeight;
-  return div;
-}
-function addTyping(){
-  const div = document.createElement('div');
-  div.className = 'amsg bot typing';
-  div.innerHTML = '<span></span><span></span><span></span>';
-  advisorBody.appendChild(div);
-  advisorBody.scrollTop = advisorBody.scrollHeight;
-  return div;
-}
-function buildWaMessage(data){
-  if(currentLang === 'en'){
-    const lines = [
-      'Hi Clean Clean Mobile Detail.',
-      '',
-      "I spoke with the advisor and I'd like to continue with the evaluation.",
-      '',
-      'Information collected',
-      '',
-      `Name: ${data.nombre || '-'}`,
-      `Vehicle: ${data.vehiculo || '-'}`
-    ];
-    if(data.color) lines.push(`Color: ${data.color}`);
-    lines.push(
-      `City: ${data.ciudad || '-'}`,
-      `Detected issue: ${data.problema || '-'}`,
-      `Goal: ${data.objetivo || '-'}`,
-      `Recommended treatment: ${data.tratamiento || '-'}`,
-      `Estimated date: ${data.fecha || '-'}`,
-      '',
-      "I'll be waiting to hear from you.",
-      'Thank you very much.'
-    );
-    return lines.join('\n');
-  }
-  const lines = [
-    'Hola Clean Clean Mobile Detail.',
-    '',
-    'Hablé con el asesor y me gustaría continuar con la evaluación.',
-    '',
-    'Información recopilada',
-    '',
-    `Nombre: ${data.nombre || '-'}`,
-    `Vehículo: ${data.vehiculo || '-'}`
-  ];
-  if(data.color) lines.push(`Color: ${data.color}`);
-  lines.push(
-    `Ciudad: ${data.ciudad || '-'}`,
-    `Problema detectado: ${data.problema || '-'}`,
-    `Objetivo: ${data.objetivo || '-'}`,
-    `Tratamiento recomendado: ${data.tratamiento || '-'}`,
-    `Fecha estimada: ${data.fecha || '-'}`,
-    '',
-    'Quedo atento.',
-    'Muchas gracias.'
-  );
-  return lines.join('\n');
-}
-function addSummary(data){
-  const L = currentLang === 'en'
-    ? {client:'Client',vehicle:'Vehicle',goal:'Goal',status:'Reported condition',treat:'Recommended treatment',time:'Estimated time',ask:'Does this recommendation work for you? Confirm your appointment via WhatsApp:',cta:'Continue on WhatsApp'}
-    : {client:'Cliente',vehicle:'Vehículo',goal:'Objetivo',status:'Estado informado',treat:'Tratamiento recomendado',time:'Tiempo estimado',ask:'¿Te parece bien esta recomendación? Confirmá tu cita por WhatsApp:',cta:'Continuar por WhatsApp'};
-  const wrap = document.createElement('div');
-  wrap.className = 'advisor-evaluation';
-  wrap.innerHTML = `
-    <div class="eval-head">◆ Vehicle Evaluation</div>
-    <div class="eval-row"><span class="lbl">${L.client}</span><span class="val">${data.nombre || '—'}</span></div>
-    <div class="eval-row"><span class="lbl">${L.vehicle}</span><span class="val">${data.vehiculo || '—'}${data.color ? ' · ' + data.color : ''}</span></div>
-    ${data.objetivo ? `<div class="eval-row"><span class="lbl">${L.goal}</span><span class="val dim">${data.objetivo}</span></div>` : ''}
-    ${data.problema ? `<div class="eval-row"><span class="lbl">${L.status}</span><span class="val dim">${data.problema}</span></div>` : ''}
-    <div class="eval-row"><span class="lbl">${L.treat}</span><span class="val">${data.tratamiento || '—'}</span></div>
-    ${data.tiempo ? `<div class="eval-row"><span class="lbl">${L.time}</span><span class="val dim">${data.tiempo}</span></div>` : ''}
-    <div class="eval-cta">
-      <p>${L.ask}</p>
-      <a class="btn btn-blue btn-sm" target="_blank" href="https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(buildWaMessage(data))}">${L.cta}</a>
-    </div>
-  `;
-  advisorBody.appendChild(wrap);
-  advisorBody.scrollTop = advisorBody.scrollHeight;
-}
-function openAdvisor(){
-  advisorPanel.classList.add('open');
-  hideAdvisorHint();
-  if(!advisorOpened){
-    advisorOpened = true;
-    addMsg('bot', currentLang === 'en'
-      ? "Hi 👋 Welcome to Clean Clean Mobile Detail. Tell me, what can I help you with today?"
-      : 'Hola 👋 Bienvenido a Clean Clean Mobile Detail. Contame, ¿en qué puedo ayudarte hoy?');
-  }
-}
-advisorToggle.addEventListener('click', openAdvisor);
-
-/* ================= LIVE LANGUAGE SWITCH → ADVISOR REACTS ================= */
-function notifyAdvisorLanguageSwitch(lang){
-  if(!langSwitchBootstrapped){ langSwitchBootstrapped = true; return; } // skip on initial page load
-  if(!advisorOpened) return; // chat never opened, nothing to announce
-  document.querySelectorAll('.amsg.typing').forEach(el=>el.remove());
-  addMsg('bot', lang === 'en'
-    ? "Switched to English ✅ — I'll continue in English from here, feel free to keep going."
-    : 'Cambié a español ✅ — sigo la conversación en español desde acá, dale nomás.');
-}
-advisorClose.addEventListener('click', ()=> advisorPanel.classList.remove('open'));
-
-/* ================= CHAT HINT BUBBLE (40s) ================= */
-const advisorHint = document.getElementById('advisorHint');
-const advisorHintClose = document.getElementById('advisorHintClose');
-const advisorHintCta = document.getElementById('advisorHintCta');
-function hideAdvisorHint(){ advisorHint.classList.remove('show'); }
-advisorHintClose.addEventListener('click', hideAdvisorHint);
-advisorHintCta.addEventListener('click', ()=>{ hideAdvisorHint(); openAdvisor(); });
-setTimeout(()=>{
-  if(!advisorOpened && !advisorPanel.classList.contains('open')){
-    advisorHint.classList.add('show');
-    setTimeout(hideAdvisorHint, 9000);
-  }
-}, 40000);
-
-advisorForm.addEventListener('submit', async function(e){
-  e.preventDefault();
-  const val = advisorInput.value.trim();
-  if(!val || advisorInput.disabled) return;
-  addMsg('user', val);
-  advisorHistory.push({role:'user', content: val});
-  advisorInput.value = '';
-  advisorInput.disabled = true;
-  advisorForm.querySelector('.advisor-send').disabled = true;
-  const typingEl = addTyping();
-
-  try{
-    const response = await fetch("/api/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        messages: [
-          { role: "system", content: getSystemPrompt() },
-          ...advisorHistory.slice(-12)
-        ]
-      })
-    });
-    const data = await response.json();
-    if(data.error){ throw new Error(data.error || 'API error'); }
-    let fullText = (data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) || '';
-    fullText = fullText.trim();
-    typingEl.remove();
-
-    let displayText = fullText;
-    let summaryData = null;
-    const marker = 'RESUMEN_JSON:';
-    const idx = fullText.indexOf(marker);
-    if(idx !== -1){
-      displayText = fullText.slice(0, idx).trim();
-      const jsonStr = fullText.slice(idx + marker.length).trim();
-      try{ summaryData = JSON.parse(jsonStr); }catch(err){ summaryData = null; }
-    }
-    if(displayText) addMsg('bot', displayText);
-    advisorHistory.push({role:'assistant', content: fullText});
-    if(summaryData) addSummary(summaryData);
-  }catch(err){
-    typingEl.remove();
-    addMsg('bot', 'No pude conectarme en este momento. Escribinos directo y coordinamos tu cita al instante.');
-    addSummary({});
-  }finally{
-    advisorInput.disabled = false;
-    advisorForm.querySelector('.advisor-send').disabled = false;
-    advisorInput.focus();
-  }
-});
-
-/* ================= AI DIAGNÓSTICO VISUAL ================= */
-(function(){
-  const zone = document.getElementById('diagZone');
-  const fileInput = document.getElementById('diagFileInput');
-  const previewWrap = document.getElementById('diagPreviewWrap');
-  const previewImg = document.getElementById('diagPreviewImg');
-  const zoneContent = document.getElementById('diagZoneContent');
-  const analyzeBtn = document.getElementById('diagAnalyzeBtn');
-  const btnText = document.getElementById('diagBtnText');
-  const scanBar = document.getElementById('diagScanBar');
-  const placeholder = document.getElementById('diagPlaceholder');
-  const result = document.getElementById('diagResult');
-  const scoreVal = document.getElementById('diagScoreVal');
-  const scoreSub = document.getElementById('diagScoreSub');
-  const barsWrap = document.getElementById('diagBarsWrap');
-  const packName = document.getElementById('diagPackName');
-  const packReason = document.getElementById('diagPackReason');
-  const improve = document.getElementById('diagImprove');
-  const findingsWrap = document.getElementById('diagFindings');
-  const waBtn = document.getElementById('diagWaBtn');
-  const resetBtn = document.getElementById('diagResetBtn');
-  const changeBtn = document.getElementById('diagChangeBtn');
-
-  let currentBase64 = null;
-
-  function toBase64(file){ return new Promise((res,rej)=>{ const r=new FileReader(); r.onload=()=>res(r.result.split(',')[1]); r.onerror=rej; r.readAsDataURL(file); }); }
-
-  function pctStatus(pct){
-    const L = currentLang === 'en'
-      ? {excellent:'Excellent',good:'Good',fair:'Fair',critical:'Critical'}
-      : {excellent:'Excelente',good:'Bueno',fair:'Regular',critical:'Crítico'};
-    if(pct>=85) return {label:L.excellent,cls:'ok'};
-    if(pct>=65) return {label:L.good,cls:'ok'};
-    if(pct>=45) return {label:L.fair,cls:'warn'};
-    return {label:L.critical,cls:'danger'};
-  }
-
-  function makeReportRef(){
-    const d = new Date();
-    const yy = String(d.getFullYear()).slice(-2);
-    const mm = String(d.getMonth()+1).padStart(2,'0');
-    const dd = String(d.getDate()).padStart(2,'0');
-    const seq = Math.floor(100+Math.random()*900);
-    return 'REF SFP-' + yy + mm + dd + '-' + seq;
-  }
-
-  function handleFile(file){
-    if(!file||!file.type.startsWith('image/')) return;
-    const url = URL.createObjectURL(file);
-    previewImg.src = url;
-    zoneContent.style.display = 'none';
-    previewWrap.style.display = 'block';
-    analyzeBtn.disabled = false;
-    analyzeBtn.classList.remove('error');
-    btnText.textContent = currentLang === 'en' ? 'Analyze vehicle' : 'Analizar vehículo';
-    toBase64(file).then(b64=>{ currentBase64 = b64; });
-    result.classList.remove('visible');
-    placeholder.style.display = 'flex';
-    resetBtn.style.display = 'none';
-  }
-
-  fileInput.addEventListener('change', e=>{ if(e.target.files[0]) handleFile(e.target.files[0]); });
-  zone.addEventListener('dragover', e=>{ e.preventDefault(); zone.classList.add('drag'); });
-  zone.addEventListener('dragleave', ()=>zone.classList.remove('drag'));
-  zone.addEventListener('drop', e=>{ e.preventDefault(); zone.classList.remove('drag'); if(e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]); });
-  changeBtn.addEventListener('click', e=>{ e.stopPropagation(); fileInput.value=''; fileInput.click(); });
-  resetBtn.addEventListener('click', ()=>{
-    fileInput.value=''; currentBase64=null; previewImg.src='';
-    previewWrap.style.display='none'; zoneContent.style.display='block';
-    analyzeBtn.disabled=true; btnText.textContent = currentLang === 'en' ? 'Select a photo first' : 'Seleccioná una foto primero';
-    result.classList.remove('visible'); placeholder.style.display='flex';
-    resetBtn.style.display='none'; barsWrap.innerHTML=''; findingsWrap.innerHTML='';
-  });
-
-  analyzeBtn.addEventListener('click', async ()=>{
-    if(!currentBase64) return;
-    analyzeBtn.classList.add('loading');
-    btnText.textContent = currentLang === 'en' ? 'Analyzing...' : 'Analizando...';
-    scanBar.style.display = 'block';
-
-    const prompt = currentLang === 'en' ? [
-      'You are an expert in mobile auto detailing.',
-      'Analyze this photo of a vehicle and respond ONLY with valid JSON (no markdown, no backticks, no extra text) with this exact structure:',
-      '{',
-      '  "scoreLabel": "2-3 word text describing overall condition (e.g. Needs attention, Fair condition, Good condition, Excellent condition), in English",',
-      '  "dimensions": [',
-      '    {"label": "Paint and gloss", "pct": NUMBER_0_TO_100},',
-      '    {"label": "Swirls and marks", "pct": NUMBER_0_TO_100},',
-      '    {"label": "Dirt / contamination", "pct": NUMBER_0_TO_100},',
-      '    {"label": "Current protection level", "pct": NUMBER_0_TO_100}',
-      '  ],',
-      '  "pack": "Interior & Exterior Detailing, Paint Correction, Ceramic Coating or Hand Maintenance depending on what you recommend, in English",',
-      '  "packReason": "1-2 sentences explaining why that service, in a warm, clear tone, in English",',
-      '  "improvement": "whole number 0-100 estimating the expected % improvement after the process",',
-      '  "findings": ["concrete finding 1", "concrete finding 2", "concrete finding 3"], in English',
-      '}',
-      'Replace NUMBER_0_TO_100 with a whole number between 0 and 100. Each "pct" is the current level of that dimension (100 = perfect).',
-      "If you can't clearly see a dimension because the photo doesn't show it, estimate 60 by default.",
-      'Be honest but constructive. Recommend Hand Maintenance if the vehicle is in good condition and just needs upkeep.',
-      'Recommend Paint Correction if there are visible swirls, marks or oxidation. Recommend Ceramic Coating if the paint is in good condition but visibly unprotected. Recommend Interior & Exterior Detailing if the vehicle needs a general deep clean.',
-      'Respond only in English.'
-    ].join(' ') : [
-      'Sos un experto en detallado automotriz móvil.',
-      'Analiza esta foto de un vehículo y responde UNICAMENTE con un JSON valido (sin markdown, sin backticks, sin texto extra) con esta estructura exacta:',
-      '{',
-      '  "scoreLabel": "texto de 2-3 palabras describiendo el estado general (ej: Necesita atención, Estado regular, Buen estado, Excelente estado)",',
-      '  "dimensions": [',
-      '    {"label": "Pintura y brillo", "pct": NUMERO_0_A_100},',
-      '    {"label": "Swirls y marcas", "pct": NUMERO_0_A_100},',
-      '    {"label": "Suciedad / contaminación", "pct": NUMERO_0_A_100},',
-      '    {"label": "Nivel de protección actual", "pct": NUMERO_0_A_100}',
-      '  ],',
-      '  "pack": "Interior & Exterior Detailing, Corrección de Pintura, Ceramic Coating o Mantenimiento a Mano segun cual recomiendas",',
-      '  "packReason": "1-2 oraciones explicando por que ese servicio, en tono cercano y claro",',
-      '  "improvement": "numero entero 0-100 estimando el % de mejora esperado tras el proceso",',
-      '  "findings": ["hallazgo 1 concreto", "hallazgo 2 concreto", "hallazgo 3 concreto"]',
-      '}',
-      'Reemplaza NUMERO_0_A_100 con un numero entero entre 0 y 100. Cada "pct" es el nivel actual de esa dimension (100 = perfecto).',
-      'Si no podes ver bien alguna dimension porque la foto no la muestra, estima 60 por defecto.',
-      'Se honesto pero constructivo. Recomienda Mantenimiento a Mano si el vehiculo esta en buen estado y solo necesita conservacion.',
-      'Recomienda Corrección de Pintura si hay swirls, marcas u oxidacion visibles. Recomienda Ceramic Coating si la pintura esta en buen estado pero sin proteccion visible. Recomienda Interior & Exterior Detailing si el vehiculo necesita una limpieza profunda general.'
-    ].join(' ');
-
-    try {
-      const resp = await fetch('/api/vision', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          image: currentBase64,
-          mimeType: 'image/jpeg',
-          prompt: prompt
-        })
-      });
-      const data = await resp.json();
-      if(data.error) throw new Error(data.error);
-      let raw = (data.content || '').trim();
-      raw = raw.replace(/```json|```/g,'').trim();
-      const parsed = JSON.parse(raw);
-      renderResult(parsed);
-    } catch(err) {
-      btnText.textContent = currentLang === 'en' ? 'Error — try again' : 'Error — intentá de nuevo';
-      analyzeBtn.classList.remove('loading');
-      analyzeBtn.classList.add('error');
-      scanBar.style.display = 'none';
-      console.error(err);
-      setTimeout(()=>{
-        analyzeBtn.classList.remove('error');
-        btnText.textContent = currentLang === 'en' ? 'Analyze vehicle' : 'Analizar vehículo';
-      }, 2600);
-    }
-  });
-
-  function renderResult(d){
-    scanBar.style.display = 'none';
-    analyzeBtn.classList.remove('loading');
-    btnText.textContent = currentLang === 'en' ? 'Analysis complete ✓' : 'Análisis completado ✓';
-    analyzeBtn.disabled = true;
-    resetBtn.style.display = 'block';
-    placeholder.style.display = 'none';
-    result.classList.add('visible');
-
-    const avgPct = Math.round(d.dimensions.reduce((a,b)=>a+b.pct,0)/d.dimensions.length);
-    scoreVal.textContent = avgPct + '/100';
-    scoreSub.textContent = d.scoreLabel || '';
-    const reportRefEl = document.getElementById('diagReportRef');
-    if(reportRefEl) reportRefEl.textContent = makeReportRef();
-
-    barsWrap.innerHTML = '';
-    d.dimensions.forEach(dim=>{
-      const st = pctStatus(dim.pct);
-      const row = document.createElement('div');
-      row.className = 'diag-bar-row';
-      row.innerHTML = '<span style="color:var(--text-dim)">' + dim.label + '</span><div class="diag-bar-track"><div class="diag-bar-fill" style="width:0%" data-target="' + dim.pct + '"></div></div><span class="diag-bar-pct">' + dim.pct + '<span class="diag-bar-status ' + st.cls + '">' + st.label + '</span></span>';
-      barsWrap.appendChild(row);
-    });
-    setTimeout(()=>{
-      barsWrap.querySelectorAll('.diag-bar-fill').forEach(el=>{ el.style.width = el.dataset.target + '%'; });
-    }, 80);
-
-    const packFallback = currentLang === 'en' ? 'Paint Correction' : 'Corrección de Pintura';
-    packName.textContent = d.pack || packFallback;
-    packReason.textContent = d.packReason || '';
-    improve.textContent = d.improvement ? ('+' + d.improvement + (currentLang === 'en' ? '% expected improvement' : '% mejora esperada')) : '';
-
-    findingsWrap.innerHTML = '';
-    (d.findings||[]).forEach(f=>{
-      const el = document.createElement('div');
-      el.className = 'diag-finding';
-      el.textContent = f;
-      findingsWrap.appendChild(el);
-    });
-
-    var findings = (d.findings||[]).join('\n\u2022 ');
-    var msg = currentLang === 'en'
-      ? 'Hi Clean Clean Mobile Detail! I used the site\'s visual diagnostic and was recommended *' + d.pack + '*.\n\nResults:\n\u2022 Overall condition: ' + avgPct + '/100 - ' + (d.scoreLabel||'') + '\n\u2022 ' + findings + '\n\nCan you help me schedule an appointment?'
-      : 'Hola Clean Clean Mobile Detail! Use el diagnostico visual del sitio y me recomendaron *' + d.pack + '*.\n\nResultados:\n\u2022 Estado general: ' + avgPct + '/100 - ' + (d.scoreLabel||'') + '\n\u2022 ' + findings + '\n\n\u00bfPueden ayudarme a coordinar una cita?';
-    waBtn.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(msg);
-    waBtn.textContent = (currentLang === 'en' ? 'Book ' : 'Reservar ') + d.pack;
-  }
-})();
 
 /* ================= APPLY SAVED LANGUAGE PREFERENCE ================= */
 applyLanguage(currentLang);
